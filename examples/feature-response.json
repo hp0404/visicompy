@@ -1,0 +1,113 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "id": "ADR3K0MXUATDQQQ8XW",
+            "properties": {
+                "name": "5",
+                "categories": "adr_address",
+                "country_code": "ua",
+                "country": "Україна",
+                "postal_code": "04201",
+                "street_id": "STR3K0MXUATD",
+                "lang": "uk",
+                "street": "Полярна",
+                "street_type": "вул.",
+                "settlement_id": "STL1NQ7EP",
+                "settlement": "Київ",
+                "settlement_type": "місто",
+                "copyright": "Map Data © 2022, «Visicom» SC",
+                "relevance": 7.13375,
+                "settlement_url": "https://api.visicom.ua/data-api/5.0/uk/feature/STL1NQ7EP.json",
+                "street_url": "https://api.visicom.ua/data-api/5.0/uk/feature/STR3K0MXUATD.json"
+            },
+            "bbox": [
+                30.4536,
+                50.520788,
+                30.454223,
+                50.521642
+            ],
+            "geo_centroid": {
+                "type": "Point",
+                "coordinates": [
+                    30.453879,
+                    50.521189
+                ]
+            },
+            "url": "https://api.visicom.ua/data-api/5.0/uk/feature/ADR3K0MXUATDQQQ8XW.json"
+        },
+        {
+            "type": "Feature",
+            "id": "ADR3K0MXUATDVV119S",
+            "properties": {
+                "name": "5б",
+                "categories": "adr_address",
+                "country_code": "ua",
+                "country": "Україна",
+                "postal_code": "04201",
+                "street_id": "STR3K0MXUATD",
+                "lang": "uk",
+                "street": "Полярна",
+                "street_type": "вул.",
+                "settlement_id": "STL1NQ7EP",
+                "settlement": "Київ",
+                "settlement_type": "місто",
+                "copyright": "Map Data © 2022, «Visicom» SC",
+                "relevance": 6.045000006780028,
+                "settlement_url": "https://api.visicom.ua/data-api/5.0/uk/feature/STL1NQ7EP.json",
+                "street_url": "https://api.visicom.ua/data-api/5.0/uk/feature/STR3K0MXUATD.json"
+            },
+            "bbox": [
+                30.454391,
+                50.522266,
+                30.455147,
+                50.52286
+            ],
+            "geo_centroid": {
+                "type": "Point",
+                "coordinates": [
+                    30.45476,
+                    50.522553
+                ]
+            },
+            "url": "https://api.visicom.ua/data-api/5.0/uk/feature/ADR3K0MXUATDVV119S.json"
+        },
+        {
+            "type": "Feature",
+            "id": "ADR3K0MXUATD7B8BRC",
+            "properties": {
+                "name": "5а",
+                "categories": "adr_address",
+                "country_code": "ua",
+                "country": "Україна",
+                "postal_code": "04201",
+                "street_id": "STR3K0MXUATD",
+                "lang": "uk",
+                "street": "Полярна",
+                "street_type": "вул.",
+                "settlement_id": "STL1NQ7EP",
+                "settlement": "Київ",
+                "settlement_type": "місто",
+                "copyright": "Map Data © 2022, «Visicom» SC",
+                "relevance": 6.045000006780028,
+                "settlement_url": "https://api.visicom.ua/data-api/5.0/uk/feature/STL1NQ7EP.json",
+                "street_url": "https://api.visicom.ua/data-api/5.0/uk/feature/STR3K0MXUATD.json"
+            },
+            "bbox": [
+                30.453201,
+                50.521624,
+                30.455107,
+                50.522156
+            ],
+            "geo_centroid": {
+                "type": "Point",
+                "coordinates": [
+                    30.454187,
+                    50.521848
+                ]
+            },
+            "url": "https://api.visicom.ua/data-api/5.0/uk/feature/ADR3K0MXUATD7B8BRC.json"
+        }
+    ]
+}

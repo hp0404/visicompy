@@ -1,0 +1,36 @@
+{
+    "type": "Feature",
+    "id": "ADR3K0MXUAGDDG1D1Y",
+    "properties": {
+        "name": "26",
+        "categories": "adr_address",
+        "country_code": "ua",
+        "country": "Україна",
+        "postal_code": "01001",
+        "street_id": "STR3K0MXUAGD",
+        "lang": "uk",
+        "street": "Хрещатик",
+        "street_type": "вул.",
+        "settlement_id": "STL1NQ7EP",
+        "settlement": "Київ",
+        "settlement_type": "місто",
+        "copyright": "Map Data © 2022, «Visicom» SC",
+        "relevance": 7.13375,
+        "settlement_url": "https://api.visicom.ua/data-api/5.0/uk/feature/STL1NQ7EP.json",
+        "street_url": "https://api.visicom.ua/data-api/5.0/uk/feature/STR3K0MXUAGD.json"
+    },
+    "bbox": [
+        30.520936,
+        50.44845,
+        30.522066,
+        50.449359
+    ],
+    "geo_centroid": {
+        "type": "Point",
+        "coordinates": [
+            30.521626,
+            50.448847
+        ]
+    },
+    "url": "https://api.visicom.ua/data-api/5.0/uk/feature/ADR3K0MXUAGDDG1D1Y.json"
+}
