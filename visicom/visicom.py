@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """This module contains Visicom class."""
 from dataclasses import dataclass
+from time import sleep
 from typing import Any, ClassVar, Dict, List, Optional, Union
 
 import httpx
@@ -9,6 +10,8 @@ from .logger import log
 
 JSON = Dict[str, Any]
 Geometry = List[float]
+
+TIMEOUT = 1.2
 
 
 def log_request(request: httpx.Request) -> None:
@@ -59,13 +62,14 @@ class Visicom:
             event_hooks={"request": [log_request], "response": [log_response]},
         )
 
-    def geocode(self, address: str, limit: bool = True) -> Union[JSON, Geometry]:
+    def geocode(self, address: str, limit: bool = True) -> Union[JSON, Geometry, List]:
         """Extracts features/coordinates by calling geocode endpoint."""
         if self.client is None:
             self.client = self.create_client()
+        sleep(TIMEOUT)
         response = self.client.get(
             "/data-api/5.0/uk/geocode.json", params={"text": address}
         ).json()
-        if not limit:
-            return response
-        return process_response(response)
+        if not response:
+            return []
+        return response if not limit else process_response(response)
