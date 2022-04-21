@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
+"""This module contains logging-related utilities."""
 import logging
+from typing import Callable
 
 
-def create_logger(name: str = "visicom.log"):
+def create_logger(name: str = "visicom.log") -> logging.Logger:
+    """Creates logger with File & Stream Handlers."""
     logger = logging.getLogger(name)
     logger.setLevel(logging.DEBUG)
     fh = logging.FileHandler(name, encoding="utf-8")
@@ -17,7 +20,8 @@ def create_logger(name: str = "visicom.log"):
     return logger
 
 
-def initialize_logger():
+def initialize_logger() -> Callable[..., None]:
+    """Creates custom log method."""
     _logger = create_logger()
     return _logger.info
 
