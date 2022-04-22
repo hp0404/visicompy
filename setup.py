@@ -22,5 +22,8 @@ setup(
     author="hp0404",
     long_description=get_long_description(),
     packages=find_packages(),
+    package_data={
+        package: ["py.typed", ".pyi", "**/.pyi"] for package in find_packages()
+    },
     install_requires=["httpx==0.22.0"],
 )
