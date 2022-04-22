@@ -51,29 +51,26 @@ class Visicom:
     [30.453879, 50.521189]
     """
 
-    token: str  # token length 32
     BASE_URL: ClassVar[str] = "https://api.visicom.ua"
+    token: str  # token length 32
+    client: Optional[httpx.Client] = None
 
-    def ensure_context_created(self) -> None:
-        """Ensures the client is created and the connection is active."""
+    def fetch(self, endpoint: str, params: Optional[Params] = None) -> httpx.Response:
+        """Requests data making sure the client is up & timeouts are set."""
         if self.client is None or self.client.is_closed:
             self.client: httpx.Client = httpx.Client(
                 base_url=Visicom.BASE_URL,
                 params={"key": self.token},
                 event_hooks={"request": [log_request], "response": [log_response]},
             )
-
-    def fetch(self, endpoint: str, params: Optional[Params] = None) -> httpx.Response:
-        """Requests data making sure the client is up & timeouts are set."""
-        self.ensure_context_created()
-        # timeout
-        sleep(TIMEOUT)
         return self.client.get(endpoint, params=params)
 
     def geocode(self, address: str, limit: bool = True) -> Union[JSON, Geometry, List]:
         """Extracts features/coordinates by calling geocode endpoint."""
-        _endpoint = "/data-api/5.0/uk/geocode.json"
-        response = self.fetch(_endpoint, params={"text": address})
+        geocode_endpoint = "/data-api/5.0/uk/geocode.json"
+        response = self.fetch(geocode_endpoint, params={"text": address})
+        sleep(TIMEOUT)
+
         data = response.json()
         if not data:
             return []
