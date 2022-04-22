@@ -9,6 +9,7 @@ import httpx
 from .logger import log
 
 JSON = Dict[str, Any]
+Params = Dict[str, Union[str, float]]
 Geometry = List[float]
 
 TIMEOUT = 1.2
@@ -50,26 +51,30 @@ class Visicom:
     [30.453879, 50.521189]
     """
 
-    token: str  # 32
-    client: Optional[httpx.Client] = None
+    token: str  # token length 32
     BASE_URL: ClassVar[str] = "https://api.visicom.ua"
 
-    def create_client(self) -> httpx.Client:
-        """Creates custom httpx.Client."""
-        return httpx.Client(
-            base_url=Visicom.BASE_URL,
-            params={"key": self.token},
-            event_hooks={"request": [log_request], "response": [log_response]},
-        )
+    def ensure_context_created(self) -> None:
+        """Ensures the client is created and the connection is active."""
+        if self.client is None or self.client.is_closed:
+            self.client: httpx.Client = httpx.Client(
+                base_url=Visicom.BASE_URL,
+                params={"key": self.token},
+                event_hooks={"request": [log_request], "response": [log_response]},
+            )
+
+    def fetch(self, endpoint: str, params: Optional[Params] = None) -> httpx.Response:
+        """Requests data making sure the client is up & timeouts are set."""
+        self.ensure_context_created()
+        # timeout
+        sleep(TIMEOUT)
+        return self.client.get(endpoint, params=params)
 
     def geocode(self, address: str, limit: bool = True) -> Union[JSON, Geometry, List]:
         """Extracts features/coordinates by calling geocode endpoint."""
-        if self.client is None:
-            self.client = self.create_client()
-        sleep(TIMEOUT)
-        response = self.client.get(
-            "/data-api/5.0/uk/geocode.json", params={"text": address}
-        ).json()
-        if not response:
+        _endpoint = "/data-api/5.0/uk/geocode.json"
+        response = self.fetch(_endpoint, params={"text": address})
+        data = response.json()
+        if not data:
             return []
-        return response if not limit else process_response(response)
+        return process_response(data) if limit else data
