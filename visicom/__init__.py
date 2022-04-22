@@ -3,4 +3,4 @@
 from visicom.visicom import Visicom
 
 __all__ = ["Visicom"]
-__version__ = "0.1.0"
+__version__ = "0.1.1"
