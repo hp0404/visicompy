@@ -25,5 +25,5 @@ setup(
     package_data={
         package: ["py.typed", ".pyi", "**/.pyi"] for package in find_packages()
     },
-    install_requires=["httpx==0.22.0"],
+    install_requires=["httpx==0.23.0"],
 )
