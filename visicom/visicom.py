@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """This module contains Visicom class."""
-from dataclasses import dataclass
 from time import sleep
 from typing import Any, ClassVar, Dict, List, Optional, Union
 
 import httpx
+from pydantic import BaseModel, Field
 
 from .logger import log
 
@@ -38,8 +38,7 @@ def process_response(response: JSON) -> Geometry:
     raise ValueError
 
 
-@dataclass
-class Visicom:
+class Visicom(BaseModel):
     """Visicom wrapper base class
 
     Examples
@@ -52,8 +51,11 @@ class Visicom:
     """
 
     BASE_URL: ClassVar[str] = "https://api.visicom.ua"
-    token: str  # token length 32
+    token: str = Field(min_length=32, max_length=32)
     client: Optional[httpx.Client] = None
+
+    class Config:
+        arbitrary_types_allowed = True
 
     def fetch(self, endpoint: str, params: Optional[Params] = None) -> httpx.Response:
         """Requests data making sure the client is up & timeouts are set."""
